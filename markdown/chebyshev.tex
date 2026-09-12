@@ -1,0 +1,68 @@
+Let $T_n$ denote the degree-$n$ Chebyshev polynomial of the first kind.  Let $\mu$  denote the Lebesue measure on $[-1,1]$. Let $A_n(x)$ be the set $\{u\in [-1,1] | T_n(u)\leq T_n(x) \}$. Define the transform $S_n(x) = \mu(A_n(x))$. It is straightforward to show that $S_n$ is preserves Lebesgue measure on $[-1,1]$. Furthermore, we can show that $S_n(x)$ takes the form
+\[
+S_n(x) = c_k x + s_k \sqrt(1-x^2) - (1-(n \mod 2))
+\]
+where $k$ indexes subintervals $I_0, \ldots, I_{n-1}$ in $[-1,1]$ defined by
+\[
+x\in I_k \Leftrightarrow \frac{\pi k}{n} < \cos^{-1}(x) < \frac{\pi (k+1)}{n},
+\]
+or, equivalently, that $k=\lfloor \cos^{-1}(x) n/\pi\rfloor$.  For odd $n$, the constants $c_k, s_k$ are given by
+$$
+\begin{aligned}
+c_k &= (-1)^k \left(\cos(\pi k/n) + \sin(\pi k/n)/\tan(\pi/(2n))\right) \\
+s_k &= (-1)^k \left(\sin(\pi k/n) + \cos(\pi k/n)/\tan(\pi/(2n))\right),
+\end{aligned}
+$$
+whereas for even $n$ the constants are
+$$
+\begin{aligned}
+c_k &= 2(-1)^k \left(\cos(\pi \tilde{k}/n) + \sin(\pi \tilde{k}/n)/\tan(2\pi/(2n))\right) \\
+s_k &= 2(-1)^k \left(\sin(\pi \tilde{k}/n) + \cos(\pi \tilde{k}/n)/\tan(2\pi/(2n))\right),
+\end{aligned}
+$$
+where $\tilde{k}= 2\lfloor k/2\rfloor$.
+
+We can combine the odd and even cases. Letting $\xi=2-(n \mod 2)$ and $\ell_k = \xi \lfloor k/\xi\rfloor$, we have
+$$
+\begin{aligned}
+c_k &= \xi(-1)^k \left(\cos(\pi \ell_k/n) + \sin(\pi \ell_k/n)/\tan(\xi\pi/(2n))\right) \\
+s_k &= \xi(-1)^k \left(\sin(\pi \ell_k/n) + \cos(\pi \ell_k/n)/\tan(\xi\pi/(2n))\right).
+\end{aligned}
+$$
+
+$S_n$ can be represented even more compactly as a piecewise circle map for the regions $I_k$ defined earlier. Letting $\theta(x)=\cos^{-1}(x)$, we have for $x\in I_k$
+\[
+S_n(x) = (-1)^k \frac{\xi}{\sin(\pi\xi/(2n))} \sin(\psi_k - \theta(x)) + 1-\xi
+\]
+where the rotation $\psi_k$ is
+\[
+\psi_k = \frac{\pi}{n} \left(\frac{\xi}{2} + \ell_k\right)
+\]
+
+For a function $f\in L^1([-1,1])$, we can represent the Frobenius-Perron operator ${\cal P}_n$ associated with $S_n$ as
+\[ {\cal P}_n f(x) = \sum_{z\in S_n^{-1}(x)}\frac{f(z)}{\vert S'_n(z)\vert}. \]
+The pre-image $S_n^{-1}(x)$ contains $n$ elements. Letting $z_k(x)$ be the element in $I_k$, we have
+\[
+z_k(x) = \cos\left(\psi_k - (-1)^k\sin^{-1}\left((x+\xi-1)\frac{\sin(\pi\xi/(2n))}{\xi}\right)\right). 
+\]
+The derivative $S_n'$ at these points can be written
+\[
+S'(z_k(x)) = (-1)^k \frac{\xi}{\sin(\pi\xi/(2n))} \frac{\cos(\psi_k - \cos^{-1}(z_k(x)))}{\sin(\cos^{-1}(z_k(x))}
+\]
+
+Let $S$ be a transform mapping $[-1,1]$ to $[-1,1]$ with the following properties. First, $S$ preserves the Lebesque measure on $[-1,1]$. Second, $S$ is everywhere continuous and is piecewise monotonic and expanding. Third, $|S(x)|=1$ for each turning point $x\in [-1,1]$ as well as the boundary points $x\in{-1,1}$.
+
+In the context of dynamic systems, are these properties sufficient to guarantee that $S$ is exact? If not, can we guarantee that $S$ is mixing?
+
+For a function $f\in L^1([-1,1])$, we can represent the Frobenius-Perron operator ${\cal P}$ as
+\[ {\cal P}f(x) = \sum_{z\in S^{-1}(x)}\frac{f(z)}{\vert S'(z)\vert}. \]
+To obtain, $S^{-1}(x)$ and $S'(x)$, we need some additional notation. Let $m$ be a positive integer. Define constants $\xi=2-(m \mod 2)$ and $c=\xi/\sin(\xi\pi/(2m))$. We will index the branches of $S$ by $k=0,\ldots,m-1$. For branch $k$, let 
+\[ \psi_k=\frac{\pi\xi}{m)\left(\frac{1}{2} + \lfloor \frac{k}{\xi}\rfloor \right). \]
+Then the pre-image of $x$ can be written as
+\[ S^{-1}(x) = \cos\left(\psi_k - (-1)^k\sin^{-1}\left(\frac{x+\xi-1}{c}\right)\right) 
+\]
+for $k=0,\ldots, m-1$.  The derivative $S'(x)$ can be written as
+\[
+S'(x) = (-1)^\kappa c \cos(\psi_\kappa - \theta)/\sin(\theta)
+\]
+where $\theta=cos^{-1}(x)$ and $\kappa=\lfloor \theta m/\pi\rfloor$. Note that $\kappa$ indexes the branch of $S$ associated with $x$.
